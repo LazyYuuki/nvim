@@ -1,10 +1,10 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
+  "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   config = function()
-    require"nvim-treesitter.configs".setup({
+    require("nvim-treesitter.configs").setup({
       ensure_installed = {
-        "c", 
+        "c",
         "css",
         "go",
         "html",
@@ -16,7 +16,7 @@ return {
         "tsx",
         "vim",
         "vimdoc",
-        "zig"
+        "zig",
       },
       highlight = {
         enable = true,
@@ -24,11 +24,11 @@ return {
           local max_filesize = 100 * 1024 -- 100 KB
           local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
           if ok and stats and stats.size > max_filesize then
-              return true
+            return true
           end
         end,
       },
-      indent = {enable = true},
+      indent = { disable = true },
     })
-  end
+  end,
 }

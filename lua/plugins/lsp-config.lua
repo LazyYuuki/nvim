@@ -3,7 +3,7 @@ return {
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup()
-    end
+    end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -25,11 +25,12 @@ return {
           "sqls", -- sql
           "svelte",
           "taplo", -- toml
+          "tsserver", -- js / ts
           "yamlls", -- yaml
           "zls", -- zig
-        }
+        },
       })
-    end
+    end,
   },
   {
     "neovim/nvim-lspconfig",
@@ -37,124 +38,140 @@ return {
       local lsp = require("lspconfig")
 
       -- bash lsp
-      lsp.bashls.setup{}
+      lsp.bashls.setup({})
 
       -- javascript lsp
-      lsp.biome.setup{}
+      lsp.tsserver.setup({})
+      lsp.biome.setup({})
 
       -- clang lsp
-      lsp.clangd.setup{}
+      lsp.clangd.setup({})
 
       -- css lsp
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-      lsp.cssls.setup {
+      lsp.cssls.setup({
         capabilities = capabilities,
-      }
+      })
 
       -- docker lsp
-      lsp.dockerls.setup{}
+      lsp.dockerls.setup({})
 
       -- go lsp
-      lsp.gopls.setup{}
+      lsp.gopls.setup({})
 
       -- html lsp
-      lsp.html.setup{
-        capabilities = capabilities
-      }
+      lsp.html.setup({
+        capabilities = capabilities,
+      })
 
       -- json lsp
-      lsp.jsonls.setup {
+      lsp.jsonls.setup({
         capabilities = capabilities,
-      }
+      })
 
       -- lua lsp
-      lsp.lua_ls.setup {
+      lsp.lua_ls.setup({
         on_init = function(client)
           local path = client.workspace_folders[1].name
-          if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
+          if
+            vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc")
+          then
             return
           end
 
-          client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+          client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
             runtime = {
-              version = 'LuaJIT'
+              version = "LuaJIT",
             },
             workspace = {
               checkThirdParty = false,
               library = {
-                vim.env.VIMRUNTIME
-              }
-            }
+                vim.env.VIMRUNTIME,
+              },
+            },
           })
         end,
         settings = {
-          Lua = {}
-        }
-      }
+          Lua = {},
+        },
+      })
 
       -- markdown lsp
-      lsp.marksman.setup{}
+      lsp.marksman.setup({})
 
       -- python lsp
-      lsp.ruff_lsp.setup{}
+      lsp.ruff_lsp.setup({})
 
       -- rust lsp
-      lsp.rust_analyzer.setup{
-          settings = {
-            ['rust-analyzer'] = {
-              diagnostics = {
-                enable = false;
-              }
-            }
-          }
-      }
+      lsp.rust_analyzer.setup({
+        settings = {
+          ["rust-analyzer"] = {
+            diagnostics = {
+              enable = false,
+            },
+          },
+        },
+      })
 
       -- sql lsp
-      lsp.sqls.setup{}
+      lsp.sqls.setup({})
 
       -- svelte lsp
-      lsp.svelte.setup{}
+      lsp.svelte.setup({})
 
       -- toml lsp
-      lsp.taplo.setup{}
+      lsp.taplo.setup({})
 
       -- yaml lsp
-      lsp.yamlls.setup{}
+      lsp.yamlls.setup({})
 
       -- zig lsp
-      lsp.zls.setup{}
+      lsp.zls.setup({})
 
       -- Keymap setup
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)
           -- Enable completion triggered by <c-x><c-o>
-          vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+          vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
           -- Buffer local mappings.
           -- See `:help vim.lsp.*` for documentation on any of the below functions
           local opts = { buffer = ev.buf }
-          vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-          vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-          vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-          vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-          vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-          vim.keymap.set('n', '<space>wl', function()
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+          vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+          vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+          vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+          vim.keymap.set("n", "<space>wl", function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, opts)
-          vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-          vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-          vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-          vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-          vim.keymap.set('n', '<space>f', function()
-            vim.lsp.buf.format { async = true }
+          vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+          vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+          vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+          vim.keymap.set("n", "<space>f", function()
+            vim.lsp.buf.format({ async = true })
           end, opts)
         end,
       })
-    end
-  }
+    end,
+    opts = {
+      servers = {
+        tsserver = {
+          tsserver = {
+            on_attach = function(client)
+              client.server_capabilities.documentFormattingProvider = false
+              client.server_capabilities.documentLintingProvider = false
+            end,
+          },
+        },
+        biome = {},
+      },
+    },
+  },
 }
