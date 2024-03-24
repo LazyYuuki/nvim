@@ -36,30 +36,40 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local lsp = require("lspconfig")
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       -- bash lsp
-      lsp.bashls.setup({})
+      lsp.bashls.setup({
+        capabilities = capabilities,
+      })
 
       -- javascript lsp
-      lsp.tsserver.setup({})
-      lsp.biome.setup({})
+      lsp.tsserver.setup({
+        capabilities = capabilities,
+      })
+      lsp.biome.setup({
+        capabilities = capabilities,
+      })
 
       -- clang lsp
-      lsp.clangd.setup({})
+      lsp.clangd.setup({
+        capabilities = capabilities,
+      })
 
       -- css lsp
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
-
       lsp.cssls.setup({
         capabilities = capabilities,
       })
 
       -- docker lsp
-      lsp.dockerls.setup({})
+      lsp.dockerls.setup({
+        capabilities = capabilities,
+      })
 
       -- go lsp
-      lsp.gopls.setup({})
+      lsp.gopls.setup({
+        capabilities = capabilities,
+      })
 
       -- html lsp
       lsp.html.setup({
@@ -73,6 +83,7 @@ return {
 
       -- lua lsp
       lsp.lua_ls.setup({
+        capabilities = capabilities,
         on_init = function(client)
           local path = client.workspace_folders[1].name
           if
@@ -99,10 +110,14 @@ return {
       })
 
       -- markdown lsp
-      lsp.marksman.setup({})
+      lsp.marksman.setup({
+        capabilities = capabilities,
+      })
 
       -- python lsp
-      lsp.ruff_lsp.setup({})
+      lsp.ruff_lsp.setup({
+        capabilities = capabilities,
+      })
 
       -- rust lsp
       lsp.rust_analyzer.setup({
@@ -113,22 +128,33 @@ return {
             },
           },
         },
+        capabilities = capabilities,
       })
 
       -- sql lsp
-      lsp.sqls.setup({})
+      lsp.sqls.setup({
+        capabilities = capabilities,
+      })
 
       -- svelte lsp
-      lsp.svelte.setup({})
+      lsp.svelte.setup({
+        capabilities = capabilities,
+      })
 
       -- toml lsp
-      lsp.taplo.setup({})
+      lsp.taplo.setup({
+        capabilities = capabilities,
+      })
 
       -- yaml lsp
-      lsp.yamlls.setup({})
+      lsp.yamlls.setup({
+        capabilities = capabilities,
+      })
 
       -- zig lsp
-      lsp.zls.setup({})
+      lsp.zls.setup({
+        capabilities = capabilities,
+      })
 
       -- Keymap setup
       vim.api.nvim_create_autocmd("LspAttach", {
