@@ -4,8 +4,8 @@ return {
   version = "1.*",
   config = function()
     require("term-edit").setup({
-      prompt_end = "%❯ ",
-      feedkeys_delay = 200,
+      prompt_end = "❯ ",
+      feedkeys_delay = 10,
     })
   end,
 }
