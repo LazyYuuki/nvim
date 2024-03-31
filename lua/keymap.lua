@@ -50,6 +50,9 @@ reg({
     r = { tele_builtin.registers, "List thing in the registers" },
     h = { tele_builtin.help_tags, "Search help" },
   },
+  o = {
+    f = { vim.diagnostic.open_float, "Open diagnostic in float window" },
+  },
 }, { prefix = "<leader>" })
 
 reg({

@@ -47,6 +47,7 @@ return {
       lsp.tsserver.setup({
         capabilities = capabilities,
       })
+
       lsp.biome.setup({
         capabilities = capabilities,
       })
