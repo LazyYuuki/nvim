@@ -30,6 +30,9 @@ return {
         end,
       },
       indent = { disable = true },
+      autotag = {
+        enable = true,
+      },
     })
   end,
 }
