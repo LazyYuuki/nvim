@@ -1,4 +1,5 @@
 local reg = require("which-key").register
+local add = require("which-key").add
 local tele_builtin = require("telescope.builtin")
 --[[
 opts option
@@ -12,49 +13,30 @@ nowait = false, -- use `nowait` when creating keymaps
 expr = false, -- use `expr` when creating keymaps
 
 ]]
---
-reg({
-  n = {
-    l = { "<cmd>noh<cr>", "Turn off highlight after search" },
-  },
+
+add({
+  { "<leader>nl", "<cmd>noh<cr>", desc = "Turn off highlight after search" },
+  { "jk", "<esc>", desc = "Go to normal mode", mode = "i" },
+  { "df", "<esc>", desc = "Go to normal mode", mode = "v" },
+  { "<leader>t", "<cmd>NvimTreeToggle<cr>", desc = "Toggle nvim-tree" },
+  { "<leader>of", vim.diagnostic.open_float, desc = "Open diagnostic in float window" },
+  { "jk", [[<C-\><C-n>]], desc = "Escape from terminal", mode = "t" },
 })
 
-reg({
-  j = {
-    k = { "<esc>", "Go to normal mode" },
-  },
-}, { mode = "i" })
+add({
+  mode = { "n", "v" },
+  { "<", "<h", desc = "Shift left by 1 indent" },
+  { ">", ">l", desc = "Shift right by 1 indent" },
+})
 
-reg({
-  d = {
-    f = { "<esc>", "Go to normal mode" },
-  },
-}, { mode = "v" })
-
-reg({
-  ["<"] = { "<h", "Shift left by 1 indent" },
-  [">"] = { ">l", "Shift right by 1 indent" },
-}, { mode = { "n", "v" } })
-
-reg({
-  t = { "<cmd>NvimTreeToggle<cr>", "Toggle nvim-tree" },
-  f = {
-    name = "Telescope group",
-    f = { tele_builtin.find_files, "Find file" },
-    g = { tele_builtin.live_grep, "Live grep" },
-    t = { tele_builtin.grep_string, "Grep this string under the cursor in dir" },
-    c = { tele_builtin.current_buffer_fuzzy_find, "Fuzzy find current buffer" },
-    b = { tele_builtin.buffers, "Navigate buffers" },
-    s = { tele_builtin.symbols, "Search symbols" },
-    o = { tele_builtin.oldfiles, "List recently opened files" },
-    r = { tele_builtin.registers, "List thing in the registers" },
-    h = { tele_builtin.help_tags, "Search help" },
-  },
-  o = {
-    f = { vim.diagnostic.open_float, "Open diagnostic in float window" },
-  },
-}, { prefix = "<leader>" })
-
-reg({
-  ["jk"] = { [[<C-\><C-n>]], "Escape from terminal" },
-}, { mode = "t" })
+add({
+  { "<leader>ff", tele_builtin.find_files, desc = "Find files" },
+  { "<leader>fg", tele_builtin.live_grep, desc = "Live grep" },
+  { "<leader>ft", tele_builtin.grep_string, desc = "Grep this string under the cursor in dir" },
+  { "<leader>fc", tele_builtin.current_buffer_fuzzy_find, desc = "Fuzzy find current buffer" },
+  { "<leader>fb", tele_builtin.buffers, desc = "Navigate buffers" },
+  { "<leader>fs", tele_builtin.symbols, desc = "Search symbols" },
+  { "<leader>fo", tele_builtin.oldfiles, desc = "List recently opened files" },
+  { "<leader>fr", tele_builtin.registers, desc = "List thing in the registers" },
+  { "<leader>fh", tele_builtin.help_tags, desc = "Search help" },
+})

@@ -9,6 +9,15 @@ return {
     local HEIGHT_RATIO = 0.8
     local WIDTH_RATIO = 0.5
 
+    require("nvim-web-devicons").setup({
+      override = {
+        lisp = {
+          icon = "λ",
+          color = "#F7F7F7",
+        },
+      },
+    })
+
     require("nvim-tree").setup({
       -- disable_netrw = true,
       hijack_netrw = true,
