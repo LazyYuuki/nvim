@@ -18,6 +18,7 @@ return {
         "vimdoc",
         "zig",
         "svelte",
+        "commonlisp",
       },
       highlight = {
         enable = true,
@@ -29,10 +30,7 @@ return {
           end
         end,
       },
-      indent = { disable = true },
-      autotag = {
-        enable = true,
-      },
+      indent = { enable = true },
     })
   end,
 }
