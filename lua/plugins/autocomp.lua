@@ -9,6 +9,18 @@ return {
       "rafamadriz/friendly-snippets",
     },
   },
+  -- {
+  --   "HiPhish/nvim-cmp-vlime",
+  --   config = function()
+  --     require("cmp").setup.filetype({ "lisp" }, {
+  --       sources = {
+  --         {
+  --           name = "vlime",
+  --         },
+  --       },
+  --     })
+  --   end,
+  -- },
   {
     "hrsh7th/nvim-cmp",
     config = function()
