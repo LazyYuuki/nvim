@@ -15,6 +15,11 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.filetype.add({
+  extension = {
+    zon = "zig",
+  },
+})
 
 require("vim-setup")
 require("lazy").setup("plugins")
