@@ -11,6 +11,7 @@ return {
         "javascript",
         "json",
         "lua",
+        "ocaml",
         "python",
         "rust",
         "tsx",

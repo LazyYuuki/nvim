@@ -20,6 +20,7 @@ return {
           "jsonls", -- json
           "lua_ls", -- lua
           "marksman", -- markdown
+          "ocamllsp", -- ocaml
           "ruff_lsp", -- python
           "rust_analyzer", -- rust
           "sqls", -- sql
@@ -114,6 +115,11 @@ return {
 
       -- markdown lsp
       lsp.marksman.setup({
+        capabilities = capabilities,
+      })
+
+      -- ocaml lsp
+      lsp.ocamllsp.setup({
         capabilities = capabilities,
       })
 

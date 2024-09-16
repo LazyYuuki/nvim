@@ -8,6 +8,7 @@ return {
           go = { "gofmt" },
           javascript = { "biome" },
           lua = { "stylua" },
+          ocaml = { "ocamlformat" },
           python = { "ruff_format", "ruff_fix" },
           rust = { "rustfmt" },
           toml = { "taplo" },
