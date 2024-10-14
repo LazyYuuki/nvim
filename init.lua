@@ -18,6 +18,8 @@ vim.g.maplocalleader = " "
 vim.filetype.add({
   extension = {
     zon = "zig",
+    pcss = "scss",
+    postcss = "scss",
   },
 })
 

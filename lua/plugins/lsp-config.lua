@@ -14,6 +14,7 @@ return {
           "biome", -- js / ts
           "clangd", -- C/C++
           "cssls", -- css
+          "tailwindcss", -- tailwind
           "dockerls", -- docker
           "gopls", -- go
           "html",
@@ -62,6 +63,11 @@ return {
 
       -- css lsp
       lsp.cssls.setup({
+        capabilities = capabilities,
+      })
+
+      -- tailwind lsp
+      lsp.tailwindcss.setup({
         capabilities = capabilities,
       })
 
