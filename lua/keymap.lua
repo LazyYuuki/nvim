@@ -15,6 +15,10 @@ expr = false, -- use `expr` when creating keymaps
 ]]
 
 add({
+  { "gx", "<esc>:URLOpenUnderCursor<cr>", desc = "Open link under cursor" },
+})
+
+add({
   { "<leader>nl", "<cmd>noh<cr>", desc = "Turn off highlight after search" },
   { "jk", "<esc>", desc = "Go to normal mode", mode = "i" },
   { "df", "<esc>", desc = "Go to normal mode", mode = "v" },
