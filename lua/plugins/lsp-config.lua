@@ -27,7 +27,7 @@ return {
           "sqls", -- sql
           "svelte",
           "taplo", -- toml
-          "tsserver", -- js / ts
+          "ts_ls", -- js / ts
           "yamlls", -- yaml
           "zls", -- zig
         },
@@ -47,7 +47,7 @@ return {
       })
 
       -- javascript lsp
-      lsp.tsserver.setup({
+      lsp.ts_ls.setup({
         capabilities = capabilities,
       })
 
