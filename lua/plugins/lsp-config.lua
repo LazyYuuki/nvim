@@ -22,7 +22,8 @@ return {
           "lua_ls", -- lua
           "marksman", -- markdown
           "ocamllsp", -- ocaml
-          "ruff_lsp", -- python
+          "ruff_lsp", -- python linter and formatter
+          "pyright", -- python
           "rust_analyzer", -- rust
           "sqls", -- sql
           "svelte",
@@ -130,8 +131,27 @@ return {
       })
 
       -- python lsp
+      -- this is for linting and formatting
       lsp.ruff_lsp.setup({
         capabilities = capabilities,
+        init_options = {
+          settings = {},
+        },
+      })
+
+      -- this is for autocompletion
+      lsp.pyright.setup({
+        capabilities = capabilities,
+        settings = {
+          pyright = {
+            disableOrganizeImports = true,
+          },
+          python = {
+            analysis = {
+              ignore = { "*" },
+            },
+          },
+        },
       })
 
       -- rust lsp
