@@ -9,3 +9,4 @@ vim.cmd("set linebreak")
 -- vim.cmd("set wrapmargin=2")
 vim.cmd("runtime macros/matchit.vim")
 vim.cmd("filetype plugin on")
+vim.opt.cursorline = true
