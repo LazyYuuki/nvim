@@ -60,6 +60,9 @@ return {
       -- clang lsp
       lsp.clangd.setup({
         capabilities = capabilities,
+        init_options = {
+          fallbackFlags = { "-std=c++17" },
+        },
       })
 
       -- css lsp
