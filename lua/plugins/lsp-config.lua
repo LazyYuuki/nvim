@@ -61,6 +61,8 @@ return {
       lsp.clangd.setup({
         capabilities = capabilities,
         init_options = {
+          -- Check here for reason
+          -- https://github.com/clangd/coc-clangd/issues/20
           fallbackFlags = { "-std=c++17" },
         },
       })
