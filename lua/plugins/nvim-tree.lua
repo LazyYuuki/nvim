@@ -54,6 +54,9 @@ return {
         highlight_opened_files = "name",
         highlight_modified = "name",
       },
+      filters = {
+        enable = false,
+      },
     })
   end,
 }
