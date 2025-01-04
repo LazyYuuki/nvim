@@ -7,6 +7,7 @@ return {
           cpp = { "clang-format" },
           go = { "gofmt" },
           javascript = { "biome" },
+          typescript = { "biome" },
           lua = { "stylua" },
           ocaml = { "ocamlformat" },
           python = { "ruff_format", "ruff_fix" },
