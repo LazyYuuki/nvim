@@ -23,6 +23,9 @@ return {
       hijack_netrw = true,
       respect_buf_cwd = true,
       sync_root_with_cwd = true,
+      diagnostics = {
+        enable = true,
+      },
       view = {
         relativenumber = true,
         float = {
