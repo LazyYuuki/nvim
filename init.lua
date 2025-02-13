@@ -20,6 +20,7 @@ vim.filetype.add({
     zon = "zig",
     pcss = "scss",
     postcss = "scss",
+    urdf = "xml",
   },
 })
 
