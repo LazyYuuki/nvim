@@ -21,6 +21,7 @@ vim.filetype.add({
     pcss = "scss",
     postcss = "scss",
     urdf = "xml",
+    mdx = "markdown",
   },
 })
 
