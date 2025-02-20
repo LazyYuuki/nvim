@@ -13,3 +13,5 @@ vim.cmd("set columns=120")
 vim.cmd("runtime macros/matchit.vim")
 vim.cmd("filetype plugin on")
 vim.opt.cursorline = true
+
+vim.g["conjure#mapping#doc_word"] = "rk"
