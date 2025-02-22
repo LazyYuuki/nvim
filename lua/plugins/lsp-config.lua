@@ -22,7 +22,7 @@ return {
           "lua_ls", -- lua
           "marksman", -- markdown
           "ocamllsp", -- ocaml
-          "ruff_lsp", -- python linter and formatter
+          "ruff", -- python linter and formatter
           "pyright", -- python
           "rust_analyzer", -- rust
           "sqls", -- sql
@@ -137,7 +137,7 @@ return {
 
       -- python lsp
       -- this is for linting and formatting
-      lsp.ruff_lsp.setup({
+      lsp.ruff.setup({
         capabilities = capabilities,
         init_options = {
           settings = {},
