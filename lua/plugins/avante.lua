@@ -2,17 +2,40 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   lazy = false,
-  version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+  version = "*", -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   opts = {
     -- add any opts here
     -- for example
     provider = "claude",
     claude = {
       endpoint = "https://api.anthropic.com",
-      model = "claude-3-5-sonnet-20241022",
+      model = "claude-3-7-sonnet-20250219",
 
       temperature = 0,
       max_tokens = 4096,
+    },
+
+    vendors = {
+      deepseek = {
+        __inherited_from = "openai",
+        endpoint = "https://openrouter.ai/api/v1",
+        api_key_name = "OPENROUTER_API_KEY",
+        model = "deepseek/deepseek-r1-distill-llama-70b",
+        timeout = 30000,
+        temperature = 0,
+        max_tokens = 8192,
+        disable_tools = true,
+      },
+      free = {
+        __inherited_from = "openai",
+        endpoint = "https://openrouter.ai/api/v1",
+        api_key_name = "OPENROUTER_API_KEY",
+        model = "deepseek/deepseek-r1:free",
+        timeout = 30000,
+        temperature = 0,
+        max_tokens = 8192,
+        disable_tools = true,
+      },
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
