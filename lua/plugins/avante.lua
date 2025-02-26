@@ -7,15 +7,22 @@ return {
     -- add any opts here
     -- for example
     provider = "claude",
-    claude = {
+    claude35 = {
       endpoint = "https://api.anthropic.com",
-      model = "claude-3-7-sonnet-20250219",
-
+      model = "claude-3-5-sonnet-20241022",
       temperature = 0,
-      max_tokens = 4096,
+      max_tokens = 8192,
     },
 
     vendors = {
+      claude37 = {
+        __inherited_from = "openai",
+        endpoint = "https://openrouter.ai/api/v1",
+        model = "anthropic/claude-3.7-sonnet:beta",
+        timeout = 30000,
+        temperature = 0,
+        max_tokens = 8192,
+      },
       deepseek = {
         __inherited_from = "openai",
         endpoint = "https://openrouter.ai/api/v1",

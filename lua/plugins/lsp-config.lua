@@ -10,27 +10,27 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "bashls", -- bash
-          "biome", -- js / ts
-          "clangd", -- C/C++
-          "cssls", -- css
-          "tailwindcss", -- tailwind
-          "dockerls", -- docker
-          "gopls", -- go
+          "bashls",        -- bash
+          "biome",         -- js / ts
+          "clangd",        -- C/C++
+          "cssls",         -- css
+          "tailwindcss",   -- tailwind
+          "dockerls",      -- docker
+          "gopls",         -- go
           "html",
-          "jsonls", -- json
-          "lua_ls", -- lua
-          "marksman", -- markdown
-          "ocamllsp", -- ocaml
-          "ruff", -- python linter and formatter
-          "pyright", -- python
+          "jsonls",        -- json
+          "lua_ls",        -- lua
+          "marksman",      -- markdown
+          -- "ocamllsp",      -- ocaml
+          "ruff",          -- python linter and formatter
+          "pyright",       -- python
           "rust_analyzer", -- rust
-          "sqls", -- sql
+          "sqls",          -- sql
           "svelte",
-          "taplo", -- toml
-          "ts_ls", -- js / ts
-          "yamlls", -- yaml
-          "zls", -- zig
+          "taplo",         -- toml
+          "ts_ls",         -- js / ts
+          "yamlls",        -- yaml
+          "zls",           -- zig
         },
       })
     end,
@@ -103,7 +103,7 @@ return {
         on_init = function(client)
           local path = client.workspace_folders[1].name
           if
-            vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc")
+              vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc")
           then
             return
           end
@@ -131,16 +131,19 @@ return {
       })
 
       -- ocaml lsp
-      lsp.ocamllsp.setup({
-        capabilities = capabilities,
-      })
+      -- lsp.ocamllsp.setup({
+      --   capabilities = capabilities,
+      -- })
 
       -- python lsp
       -- this is for linting and formatting
       lsp.ruff.setup({
         capabilities = capabilities,
         init_options = {
-          settings = {},
+          settings = {
+            configurationPreference = "filesystemFirst",
+            fixAll = false,
+          },
         },
       })
 
