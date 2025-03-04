@@ -18,6 +18,7 @@ return {
       claude37 = {
         __inherited_from = "openai",
         endpoint = "https://openrouter.ai/api/v1",
+        api_key_name = "OPENROUTER_API_KEY",
         model = "anthropic/claude-3.7-sonnet:beta",
         timeout = 30000,
         temperature = 0,
@@ -54,7 +55,7 @@ return {
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
     "echasnovski/mini.pick", -- for file_selector provider mini.pick
-    "ibhagwan/fzf-lua", -- for file_selector provider fzf
+    "ibhagwan/fzf-lua",      -- for file_selector provider fzf
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
