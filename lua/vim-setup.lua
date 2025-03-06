@@ -8,7 +8,6 @@ vim.cmd("set number relativenumber")
 -- vim.cmd("set list")
 vim.cmd("set linebreak")
 vim.cmd("set wrap")
-vim.cmd("set columns=120")
 
 vim.cmd("runtime macros/matchit.vim")
 vim.cmd("filetype plugin on")
