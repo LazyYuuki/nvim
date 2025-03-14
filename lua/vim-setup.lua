@@ -12,6 +12,8 @@ vim.cmd("set wrap")
 vim.cmd("runtime macros/matchit.vim")
 vim.cmd("filetype plugin on")
 vim.opt.cursorline = true
+vim.opt.timeoutlen = 300
+vim.opt.updatetime = 300
 
 vim.g["conjure#mapping#doc_word"] = "rk"
 
