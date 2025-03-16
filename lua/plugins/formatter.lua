@@ -28,6 +28,5 @@ return {
       "williamboman/mason.nvim",
       "stevearc/conform.nvim",
     },
-    config = function() end,
   },
 }

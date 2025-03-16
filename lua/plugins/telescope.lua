@@ -12,17 +12,15 @@ return {
         end,
       },
     },
-    config = function()
-      require("telescope").setup({
-        defaults = {
-          layout_config = {
-            horizontal = {
-              preview_cutoff = 0,
-            },
+    opts = {
+      defaults = {
+        layout_config = {
+          horizontal = {
+            preview_cutoff = 0,
           },
         },
-      })
-    end,
+      },
+    },
   },
   {
     "nvim-telescope/telescope-ui-select.nvim",
