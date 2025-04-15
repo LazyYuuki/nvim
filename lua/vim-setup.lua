@@ -4,6 +4,7 @@ vim.cmd("set softtabstop=0")
 vim.cmd("set expandtab")
 vim.cmd("set lcs+=space:·")
 vim.cmd("set number relativenumber")
+vim.cmd("set iskeyword-=_-")
 
 -- vim.cmd("set list")
 vim.cmd("set linebreak")
