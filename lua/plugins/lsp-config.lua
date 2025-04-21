@@ -65,10 +65,6 @@ return {
           -- https://github.com/clangd/coc-clangd/issues/20
           fallbackFlags = { "-std=c++17" },
         },
-        on_attach = function(client)
-          -- Disable semantic tokens for this client
-          client.server_capabilities.semanticTokensProvider = nil
-        end,
       })
 
       -- css lsp
