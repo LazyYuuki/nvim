@@ -10,27 +10,18 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "bashls",        -- bash
-          "biome",         -- js / ts
-          "clangd",        -- C/C++
-          "cssls",         -- css
-          "tailwindcss",   -- tailwind
-          "dockerls",      -- docker
-          "gopls",         -- go
+          "bashls",      -- bash
+          "biome",       -- js / ts
+          "clangd",      -- C/C++
+          "cssls",       -- css
+          "tailwindcss", -- tailwind
+          "dockerls",    -- docker
           "html",
-          "jsonls",        -- json
-          "lua_ls",        -- lua
-          "marksman",      -- markdown
-          -- "ocamllsp",      -- ocaml
-          "ruff",          -- python linter and formatter
-          "pyright",       -- python
-          "rust_analyzer", -- rust
-          "sqls",          -- sql
+          "marksman",    -- markdown
+          "ruff",        -- python linter and formatter
+          "pyright",     -- python
           "svelte",
-          "taplo",         -- toml
-          "ts_ls",         -- js / ts
-          "yamlls",        -- yaml
-          "zls",           -- zig
+          "ts_ls",       -- js / ts
         },
       })
     end,
@@ -82,58 +73,15 @@ return {
         capabilities = capabilities,
       })
 
-      -- go lsp
-      lsp.gopls.setup({
-        capabilities = capabilities,
-      })
-
       -- html lsp
       lsp.html.setup({
         capabilities = capabilities,
-      })
-
-      -- json lsp
-      lsp.jsonls.setup({
-        capabilities = capabilities,
-      })
-
-      -- lua lsp
-      lsp.lua_ls.setup({
-        capabilities = capabilities,
-        on_init = function(client)
-          local path = client.workspace_folders[1].name
-          if
-              vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc")
-          then
-            return
-          end
-
-          client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-            runtime = {
-              version = "LuaJIT",
-            },
-            workspace = {
-              checkThirdParty = false,
-              library = {
-                vim.env.VIMRUNTIME,
-              },
-            },
-          })
-        end,
-        settings = {
-          Lua = {},
-        },
       })
 
       -- markdown lsp
       lsp.marksman.setup({
         capabilities = capabilities,
       })
-
-      -- ocaml lsp
-      -- lsp.ocamllsp.setup({
-      --   capabilities = capabilities,
-      -- })
 
       -- python lsp
       -- this is for linting and formatting
@@ -162,40 +110,8 @@ return {
         },
       })
 
-      -- rust lsp
-      lsp.rust_analyzer.setup({
-        settings = {
-          ["rust-analyzer"] = {
-            diagnostics = {
-              enable = true,
-            },
-          },
-        },
-        capabilities = capabilities,
-      })
-
-      -- sql lsp
-      lsp.sqls.setup({
-        capabilities = capabilities,
-      })
-
       -- svelte lsp
       lsp.svelte.setup({
-        capabilities = capabilities,
-      })
-
-      -- toml lsp
-      lsp.taplo.setup({
-        capabilities = capabilities,
-      })
-
-      -- yaml lsp
-      lsp.yamlls.setup({
-        capabilities = capabilities,
-      })
-
-      -- zig lsp
-      lsp.zls.setup({
         capabilities = capabilities,
       })
 
