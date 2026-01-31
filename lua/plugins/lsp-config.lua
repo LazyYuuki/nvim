@@ -22,7 +22,6 @@ return {
           "lua_ls",        -- lua
           "mdx_analyzer",  -- mdx
           "marksman",      -- markdown
-          -- "ocamllsp",      -- ocaml
           "ruff",          -- python linter and formatter
           "pyright",       -- python
           "rust_analyzer", -- rust

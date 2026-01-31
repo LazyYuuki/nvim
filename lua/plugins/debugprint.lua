@@ -1,7 +1,6 @@
 return {
   "andrewferrier/debugprint.nvim",
   dependencies = {
-    "echasnovski/mini.hipatterns",   -- Optional: Needed for line highlighting ('fine-grained' hipatterns plugin)
     "nvim-telescope/telescope.nvim", -- Optional: If you want to use the `:Debugprint search` command with telescope.nvim
   },
   config = function()

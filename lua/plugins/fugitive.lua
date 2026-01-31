@@ -1,4 +1,4 @@
-return {
+return { -- Git but in vim
   {
     "tpope/vim-fugitive",
     cmd = {

@@ -1,4 +1,4 @@
-return {
+return { -- conform is a formatter plugin
   {
     "stevearc/conform.nvim",
     config = function()
@@ -9,7 +9,6 @@ return {
           javascript = { "biome" },
           typescript = { "biome" },
           lua = { "stylua" },
-          ocaml = { "ocamlformat" },
           python = { "ruff_format", "ruff_fix" },
           rust = { "rustfmt" },
           toml = { "taplo" },

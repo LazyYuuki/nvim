@@ -1,4 +1,4 @@
-return {
+return { -- run code like repl
   {
     "Olical/conjure",
     ft = { "python", "lisp", "lua" }, -- etc
@@ -6,19 +6,6 @@ return {
     init = function()
       -- Set configuration options here
       vim.g["conjure#debug"] = true
-    end,
-
-    -- Optional cmp-conjure integration
-    dependencies = { "PaterJason/cmp-conjure" },
-  },
-  {
-    "PaterJason/cmp-conjure",
-    lazy = true,
-    config = function()
-      local cmp = require("cmp")
-      local config = cmp.get_config()
-      table.insert(config.sources, { name = "conjure" })
-      return cmp.setup(config)
     end,
   },
 }

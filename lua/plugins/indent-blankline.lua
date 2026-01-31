@@ -1,4 +1,4 @@
-return {
+return { -- pretty indent basically
   "lukas-reineke/indent-blankline.nvim",
   main = "ibl",
   opts = {},
