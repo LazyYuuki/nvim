@@ -30,4 +30,3 @@ vim.filetype.add({
 require("vim-setup")
 require("lazy").setup("plugins")
 require("keymap")
-require("agent-reload")

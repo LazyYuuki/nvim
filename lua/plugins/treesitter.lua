@@ -19,6 +19,7 @@ return {
         "vimdoc",
         "zig",
         "svelte",
+        "yaml",
       },
       highlight = {
         enable = true,
