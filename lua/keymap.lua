@@ -33,6 +33,8 @@ add({
 })
 
 add({
+  mode = { "n", "v" },
+  { "<leader>os", function() require("agentic").add_selection() end,                    desc = "Add selection to Agentic Context" },
   { "<leader>oc", function() require("agentic").toggle() end,                           desc = "Toggle Agentic Chat" },
   { "<leader>oa", function() require("agentic").add_selection_or_file_to_context() end, desc = "Add file to Agentic Context" },
   { "<leader>on", function() require("agentic").new_session() end,                      desc = "New Agentic Session" },
