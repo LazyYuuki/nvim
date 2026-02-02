@@ -21,6 +21,7 @@ return {
         "svelte",
         "yaml",
       },
+      auto_install = true,
       highlight = {
         enable = true,
         disable = function(lang, buf)
