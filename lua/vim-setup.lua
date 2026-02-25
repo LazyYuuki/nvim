@@ -33,3 +33,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
   desc = 'LSP: Disable hover capability from Ruff',
 })
+
+-- indent color scheme
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = function()
+    vim.api.nvim_set_hl(0, "IblIndent", { fg = "#2d5a3f", nocombine = true })
+    vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#39FF14", bold = true, nocombine = true })
+  end,
+})
