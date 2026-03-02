@@ -16,6 +16,7 @@ return {
           "cssls",         -- css
           "tailwindcss",   -- tailwind
           "dockerls",      -- docker
+          "elixirls",      -- elixir
           "gopls",         -- go
           "html",
           "jsonls",        -- json
@@ -49,6 +50,7 @@ return {
         cssls = { capabilities = capabilities },
         tailwindcss = { capabilities = capabilities },
         dockerls = { capabilities = capabilities },
+        elixirls = { capabilities = capabilities },
         gopls = { capabilities = capabilities },
         html = { capabilities = capabilities },
         jsonls = { capabilities = capabilities },
