@@ -42,3 +42,30 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#39FF14", bold = true, nocombine = true })
   end,
 })
+
+-- make shift GitDiff
+vim.api.nvim_create_user_command('GitDiff', function()
+  -- 1. Get the current file path relative to git
+  local file_path = vim.fn.expand('%')
+
+  -- 2. Open a new vertical split window for the Git version
+  vim.cmd('vertical new')
+  local git_buf = vim.api.nvim_get_current_buf()
+
+  -- 3. Configure the temporary Git window
+  vim.bo[git_buf].buftype = 'nofile'
+  vim.bo[git_buf].bufhidden = 'wipe'
+  vim.bo[git_buf].swapfile = false
+
+  -- 4. Safely pull the git version into this window
+  local git_cmd = string.format('git show HEAD:%s', file_path)
+  vim.cmd('silent read !' .. git_cmd)
+
+  -- 5. Delete the extra blank line created by 'read'
+  vim.cmd('1delete_')
+
+  -- 6. Turn on diff mode in both windows
+  vim.cmd('diffthis')
+  vim.cmd('wincmd p') -- Switch back to your working file
+  vim.cmd('diffthis')
+end, {})
