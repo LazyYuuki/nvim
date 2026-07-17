@@ -1,3 +1,21 @@
+local tokamak_config = vim.json.encode({
+  enabled_providers = { "openai", "tokamak" },
+  provider = {
+    openai = {
+      npm = "@ai-sdk/openai",
+      name = "OpenAI via Tokamak",
+      options = {
+        baseURL = "https://api.tokamak.sh/v1/agent-pool/codex-proxy",
+        apiKey = "{env:TOKAMAK_API_KEY}",
+        headers = {
+          Authorization = "Bearer {env:TOKAMAK_API_KEY}",
+        },
+      },
+    },
+  },
+  plugin = {},
+})
+
 local native_config = vim.json.encode({
   enabled_providers = { "openai" },
   disabled_providers = { "tokamak", "anthropic", "openrouter" },
@@ -8,7 +26,15 @@ local native_config = vim.json.encode({
 local opencode_profiles = {
   tokamak = {
     name = "Tokamak",
-    cmd = { "tokamak", "launch", "opencode", "--port" },
+    cmd = {
+      "env",
+      "XDG_DATA_HOME=" .. vim.fn.expand("~/.local/share/tokamak-opencode"),
+      "OPENCODE_CONFIG_CONTENT=" .. tokamak_config,
+      "tokamak",
+      "launch",
+      "opencode",
+      "--port",
+    },
   },
   native = {
     name = "Native OpenAI OAuth",
@@ -25,8 +51,6 @@ local opencode_profiles = {
       "OPENCODE_CONFIG_CONTENT=" .. native_config,
       "opencode",
       "--port",
-      "--model",
-      "openai/gpt-5.5",
     },
   },
 }
@@ -205,7 +229,7 @@ return {
     vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,
       { desc = "Execute opencode action…" })
     vim.keymap.set({ "n", "t" }, "<C-.>", toggle_opencode, { desc = "Toggle opencode" })
-    vim.keymap.set({ "n", "t" }, "<leader>op", select_opencode_profile, { desc = "Switch opencode route" })
+    vim.keymap.set({ "n" }, "<leader>op", select_opencode_profile, { desc = "Switch opencode route" })
 
     vim.keymap.set({ "n", "x" }, "go", function() return require("opencode").operator("@this ") end,
       { desc = "Add range to opencode", expr = true })

@@ -33,38 +33,6 @@ add({
 })
 
 add({
-  mode = { "n", "v" },
-  { "<leader>oc", "<cmd>CodeCompanionChat Toggle<cr>",       desc = "Toggle CodeCompanion Chat" },
-  { "<leader>on", "<cmd>CodeCompanionChat<cr>",              desc = "New CodeCompanion Chat" },
-  { "<leader>os", "<cmd>CodeCompanionChat Add<cr>",          desc = "Add selected code to chat buffer" },
-  { "<leader>or", "<cmd>CodeCompanionChat RefreshCache<cr>", desc = "Refresh conditional elements cache" },
-  { "<leader>oa", "<cmd>CodeCompanionActions<cr>",           desc = "Toggle Action Palette" },
-  {
-    "<leader>oi",
-    function()
-      local start_line = vim.fn.line("'<")
-      local end_line = vim.fn.line("'>")
-      vim.ui.input({ prompt = "CodeCompanion: " }, function(input)
-        if not input or input == "" then
-          return
-        end
-        local escaped = vim.fn.escape(input, [[\|"]])
-        vim.cmd(string.format("%d,%dCodeCompanion %s", start_line, end_line, escaped))
-      end)
-    end,
-    desc = "Ask CodeCompanion about selection",
-    mode = "v",
-  },
-  {
-    "<leader>om",
-    function()
-      vim.api.nvim_feedkeys(":CodeCompanionCmd ", "n", false)
-    end,
-    desc = "Toggle CodeCompanion Command (enter prompt after)"
-  },
-})
-
-add({
   { "<leader>ff", tele_builtin.find_files,                desc = "Find files" },
   { "<leader>fg", tele_builtin.live_grep,                 desc = "Live grep" },
   { "<leader>ft", tele_builtin.grep_string,               desc = "Grep this string under the cursor in dir" },
