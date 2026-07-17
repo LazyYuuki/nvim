@@ -17,8 +17,8 @@ local tokamak_config = vim.json.encode({
 })
 
 local native_config = vim.json.encode({
-  enabled_providers = { "openai" },
-  disabled_providers = { "tokamak", "anthropic", "openrouter" },
+  enabled_providers = { "openai", "tokamak" },
+  disabled_providers = { "openrouter" },
   model = "openai/gpt-5.5",
   plugin = {},
 })
