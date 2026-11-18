@@ -1,6 +1,10 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
+  init = function()
+    -- Work around stale nodes during asynchronous injection parsing.
+    vim.g._ts_force_sync_parsing = true
+  end,
   config = function()
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
